@@ -12,7 +12,8 @@ class Produtos {
     productConstructor() {
         const secProduct = document.createElement('section');
         secProduct.className = "product-card";
-        secProduct.innerHTML = `
+        secProduct.innerHTML = 
+        `
             <figure>
               <img src="${this._imagem}" alt="Comida Americana" />
               <p class="product-tag">${this._categoria}</p>
