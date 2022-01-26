@@ -20,29 +20,23 @@
       <input type="search" name="search-bar" id="search-bar" placeholder="Pesquisar por produto" />
     </form>
   </header>
+    <main>
+      <ul id="hashtags">
+        <li id="Todos">Todos</li>
+        <li id="Panificadora">Panificadora</li>
+        <li id="Frutas">Frutas</li>
+        <li id="Bebidas">Bebidas</li>
+      </ul>
 
-  <main>
-    <ul id="hashtags">
-      <li>Todos</li>
-      <li>Panificadora</li>
-      <li>Frutas</li>
-      <li>Bebidas</li>
-    </ul>
+      <section id="showcase-cart-wrapper">
+        <section id="showcase">
+        </section>
 
-    <section id="showcase-cart-wrapper">
-      <section id="showcase">
-      </section>
       <section id="cart">
         <div class="title">
           <h2>Carrinho</h2>
         </div>
-        <div id="cart-items">
-          <div id="empty-cart">
-            <img src="./src/img/cart.png" alt="">
-              <h3>Ops!</h3>
-              <p>Por enquanto não temos produtos no carrinho</p>
-          </div>
-          
+        <div id="cart-items">         
         </div>
         <div id="hidden" hidden>
           <div id="quantity">
@@ -55,11 +49,9 @@
           </div>
         </div>
       </section>
-    </section>
-  </main>
+    </main>
 
-  <script type="module" src="./src/models/kenzieFood.js"></script>
-  <script type="module" src="./src/controllers/kenzieFoodController.js"></script>
-</body>
-
+    <script type="module" src="./src/models/kenzieFood.js"></script>
+    <script type="module" src="./src/controllers/kenzieFoodController.js"></script>
+  </body>
 </html>
