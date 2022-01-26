@@ -70,13 +70,13 @@ class UIHandler {
     secProduct.className = 'product-card';
     secProduct.innerHTML = `
             <figure>
-              <img src="${_imagem}" alt="Comida Americana" />
+              <img class="showProduct" src="${_imagem}" alt="Comida Americana" />
               <p class="product-tag">${_categoria}</p>
             </figure>
             <h2>${_nome}</h2>
             <p class="product-description">${_descricao}</p>
             <p class="price">R$ ${_preco.replace('.', ',')}</p>
-            <button class="add-to-cart" id="${_id}">C</button>
+            <button class="add-to-cart" id="${_id}"><img id="${_id}" class="addCartImg" src="./src/img/addCart.png" alt=""></button>
         `
     section.appendChild(secProduct)
     return secProduct
@@ -94,22 +94,28 @@ class UICart {
     newItem.innerHTML = ""
     this.added.forEach((product) => {
       const { nome, categoria, preco, imagem, id } = product;
-        console.log(this.added)
-        newItem.className = "cart-product";
-        newItem.innerHTML = `
+      newItem.className = "cart-product";
+      newItem.setAttribute('data-id', id)
+      newItem.innerHTML = `
                 <img class="prod-img" src="${imagem}" alt="${nome}">
                 <div>
                   <h4>${nome}</h4>
                   <p>${categoria}</p>
                   <p>R$${preco.toFixed(2).replace('.', ',')}</p>
                 </div>
-                <div id="trash-button">
-                  <img src="./src/img/trash.png" alt="">
-                </div>
+                <button id="trash-button" data-id="${id}">
+                  <img id="trash-img" data-id="${id}" src="./src/img/trash.png" alt="">
+                </button>
         `
-        selectCart.appendChild(newItem);
-        this.attInfo()
+      selectCart.appendChild(newItem);
+      this.attInfo()
     })
+    SearchHandler.eventRemove(newItem);
+    // this.remove(newItem)
+  }
+
+  static remove(newItem) {
+
   }
 
   static attInfo() {
@@ -138,12 +144,18 @@ class SearchHandler {
   static eventCart = document
     .querySelector('#showcase')
     .addEventListener('click', e => {
-      console.log(e.target)
       UIHandler.addProductToCart(e.target)
     })
+
+  static eventRemove() {
+    let teste = document.querySelectorAll('#trash-button');
+    teste.forEach((product) => {
+      product.addEventListener('click', function(){
+        console.log(product)
+      })
+    })
+  }
 }
-
-
 
 async function startApp() {
   await APIController.setData()
