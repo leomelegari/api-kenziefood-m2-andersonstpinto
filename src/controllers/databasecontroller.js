@@ -6,7 +6,7 @@ class DatabaseController {
     this.databaseAPI = arrayProdutos
   }
 
-  static filtro(input) {
+  static filterData(input) {
     this.filteredData = this.databaseAPI.filter(produto => {
       // Ajustar pra incluir palavras incompletas na busca
       return (
@@ -16,17 +16,21 @@ class DatabaseController {
     })
   }
 
-  static createLocalStorageProduct(objeto) {
-    const storage = localStorage.getItem('Carrinho')
-    // Ao adicionar um item ao carrinho vamos criar o array Carrinho no localStorage
-    // Verificar se Carrinho ja existe em localStorage
-    // localStorage.length !== 0
-    localStorage.setItem('Carrinho', [...storage, objeto])
+  static createLocalStorageCart(objeto) {
+    if (localStorage.length === 0)
+      localStorage.setItem('Carrinho', JSON.stringify([], null, 2))
+
+    const currentCart = this.getLocalStorageCart()
+    localStorage.setItem(
+      'Carrinho',
+      JSON.stringify([...currentCart, objeto], null, 2)
+    )
   }
 
-  static getLocalStorage = () => localStorage.getItem('Carrinho')
+  static getLocalStorageCart = () =>
+    JSON.parse(localStorage.getItem('Carrinho'))
 
-  static getData = () => this.filteredData
+  static getFilteredData = () => this.filteredData
 }
 
 export { DatabaseController }
