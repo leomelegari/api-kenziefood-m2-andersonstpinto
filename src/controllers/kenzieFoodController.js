@@ -250,11 +250,8 @@ json.forEach(({ id, nome, categoria, descricao, imagem, preco }) => {
   newProduct.productConstructor()
 })
 
-const form = document.querySelector('form')
 const input = document.querySelector('input')
-const header = document.querySelector('header')
 const categorias = document.getElementById('hashtags')
-const lista = document.querySelectorAll('#hashtags li')
 
 input.addEventListener('keyup', test1)
 function test1(evt) {
