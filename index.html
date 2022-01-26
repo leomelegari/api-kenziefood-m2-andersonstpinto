@@ -20,18 +20,18 @@
       <input type="search" name="search-bar" id="search-bar" placeholder="Pesquisar por produto" />
     </form>
   </header>
+    <main>
+      <ul id="hashtags">
+        <li id="Todos">Todos</li>
+        <li id="Panificadora">Panificadora</li>
+        <li id="Frutas">Frutas</li>
+        <li id="Bebidas">Bebidas</li>
+      </ul>
 
-  <main>
-    <ul id="hashtags">
-      <li>Todos</li>
-      <li>Panificadora</li>
-      <li>Frutas</li>
-      <li>Bebidas</li>
-    </ul>
+      <section id="showcase-cart-wrapper">
+        <section id="showcase">
+        </section>
 
-    <section id="showcase-cart-wrapper">
-      <section id="showcase">
-      </section>
       <section id="cart">
         <div class="title">
           <h2>Carrinho</h2>
@@ -55,17 +55,9 @@
           </div>
         </div>
       </section>
-    </section>
-  </main>
-
-  <script type="module" src="./src/models/kenzieFood.js"></script>
-  <script type="module" src="./src/controllers/kenzieFoodController.js"></script>
-</body>
+    </main>
 
     <script type="module" src="./src/models/kenzieFood.js"></script>
-    <script
-      type="module"
-      src="./src/controllers/kenzieFoodController.js"
-    ></script>
+    <script type="module" src="./src/controllers/kenzieFoodController.js"></script>
   </body>
 </html>
