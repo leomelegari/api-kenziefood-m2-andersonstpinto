@@ -1,17 +1,6 @@
 import { Produtos } from '../models/kenzieFood.js'
 const section = document.getElementById('showcase')
 
-// fetch("https://shrouded-mountain-15003.herokuapp.com/https://kenzie-food-api.herokuapp.com/product")
-//     .then(response => response.json())
-//     .then(result => {
-//         result.forEach(({ id, nome, categoria, descricao, imagem, preco }) => {
-//             const newProduct = new Produtos({ id, nome, categoria, descricao, imagem, preco })
-//             newProduct.productConstructor()
-//         })
-
-//         dataBase.push(result);
-//     })
-
 class APIController {
   static database = []
 
@@ -46,10 +35,8 @@ class UIHandler {
 
   static addProductToCart(selected) {
     const toAdd = this.database.find(data => data.id == selected.id)
-    const hiddenMessage = document.getElementById('empty-cart')
     const hiddenDiv = document.getElementById('hidden')
     if (toAdd !== undefined) {
-      hiddenMessage.setAttribute('hidden', 'hidden')
       hiddenDiv.removeAttribute('hidden')
       UICart.added.push(toAdd)
       UICart.createCart()
@@ -76,7 +63,10 @@ class UIHandler {
             </figure>
             <h2>${_nome}</h2>
             <p class="product-description">${_descricao}</p>
-            <p class="price">R$ ${_preco.replace('.', ',')}</p>
+            <p class="price">${_preco.toLocaleString('pt-br', {
+              style: 'currency',
+              currency: 'BRL',
+            })}</p>
             <button class="add-to-cart" id="${_id}"><img id="${_id}" class="addCartImg" src="./src/img/addCart.png" alt=""></button>
         `
     section.appendChild(secProduct)
@@ -89,42 +79,78 @@ class UICart {
 
   static createCart() {
     const selectCart = document.getElementById('cart-items')
-    const newItem = document.createElement('div')
-    selectCart.style.justifyContent = 'flex-start'
-    selectCart.style.backgroundColor = '#FFF'
-    newItem.innerHTML = ''
-    this.added.forEach(product => {
-      const { nome, categoria, preco, imagem, id } = product
-      newItem.className = 'cart-product'
-      newItem.setAttribute('data-id', id)
-      newItem.innerHTML = `
-                <img class="prod-img" src="${imagem}" alt="${nome}">
-                <div>
-                  <h4>${nome}</h4>
-                  <p>${categoria}</p>
-                  <p>R$${preco.toFixed(2).replace('.', ',')}</p>
+    const divToHide = document.getElementById('hidden')
+
+    selectCart.innerHTML = `
+      <div id="empty-cart">
+      <img src="./src/img/cart.png" alt="">
+        <h3>Ops!</h3>
+        <p>Por enquanto não temos produtos no carrinho</p>
+      </div>`
+    const db = this.added
+    if (db.length > 0) {
+      selectCart.style.justifyContent = 'flex-start'
+      selectCart.style.backgroundColor = '#FFF'
+      db.forEach((product, index) => {
+        const { nome, categoria, preco, imagem, id } = product
+        let html = `
+                <div class="cart-product" dataid="${index}">
+                  <img class="prod-img" src="${imagem}" alt="${nome}">
+                  <div>
+                    <h4>${nome}</h4>
+                    <p>${categoria}</p>
+                    <p>${preco.toLocaleString('pt-br', {
+                      style: 'currency',
+                      currency: 'BRL',
+                    })}</p>
+                  </div>
+                  <button id="trash-button" class="trash" dataid="${index}">
+                    <img id="trash-img" class="trash" dataid="${index}" src="./src/img/trash.png" alt="">
+                  </button>
                 </div>
-                <button id="trash-button" data-id="${id}">
-                  <img id="trash-img" data-id="${id}" src="./src/img/trash.png" alt="">
-                </button>
-        `
-      selectCart.appendChild(newItem)
-      this.attInfo()
-    })
-    SearchHandler.eventRemove(newItem)
-    // this.remove(newItem)
+          `
+        if (index == 0) {
+          selectCart.innerHTML = html
+        } else {
+          selectCart.innerHTML += html
+        }
+      })
+    } else {
+      selectCart.style.justifyContent = 'center'
+      selectCart.style.backgroundColor = '#f8f9fa'
+      divToHide.setAttribute('hidden', 'hidden')
+    }
+    this.attInfo(this.added)
   }
 
-  static remove(newItem) {}
-
-  static attInfo() {
+  static attInfo(value) {
     const totalValue = document.getElementById('total-value')
     const totalQuant = document.getElementById('total-quantity')
-    const sum = UICart.added.reduce((total, product) => {
+    const sum = value.reduce((total, product) => {
       return total + Number(product.preco)
     }, 0)
-    totalQuant.innerText = UICart.added.length
+    totalQuant.innerText = value.length
     totalValue.innerText = `R$ ${sum.toFixed(2).replace('.', ',')}`
+  }
+
+  static removeFromCart(index) {
+    if (index >= 0) {
+      this.added.splice(index, 1)
+      this.createCart()
+      this.attInfo(this.added)
+    }
+  }
+
+  static interceptaCart() {
+    //Pegando o carrinho todo para "ouvir". Essa função é acionada ao add algo ao carrinho
+    const selectCart = document.getElementById('cart-items')
+
+    //Add um addEvent no carrinho acima
+    selectCart.addEventListener('click', e => {
+      //guarda o clique
+      const clicked = e.target.getAttribute('dataid')
+      this.removeFromCart(clicked)
+    })
   }
 }
 
@@ -145,15 +171,6 @@ class SearchHandler {
     .addEventListener('click', e => {
       UIHandler.addProductToCart(e.target)
     })
-
-  static eventRemove() {
-    let teste = document.querySelectorAll('#trash-button')
-    teste.forEach(product => {
-      product.addEventListener('click', function () {
-        console.log(product)
-      })
-    })
-  }
 }
 
 async function startApp() {
@@ -161,6 +178,8 @@ async function startApp() {
   //   const db = APIController.getData()
   UIHandler.setDatabase(APIController.getData())
   UIHandler.displayProducts()
+  UICart.createCart()
+  UICart.interceptaCart()
 }
 startApp()
 const json = [
@@ -247,14 +266,11 @@ json.forEach(({ id, nome, categoria, descricao, imagem, preco }) => {
     imagem,
     preco,
   })
-  newProduct.productConstructor()
+  // newProduct.productConstructor()
 })
 
-const form = document.querySelector('form')
 const input = document.querySelector('input')
-const header = document.querySelector('header')
 const categorias = document.getElementById('hashtags')
-const lista = document.querySelectorAll('#hashtags li')
 
 input.addEventListener('keyup', test1)
 function test1(evt) {

@@ -7,7 +7,7 @@ class Produtos {
     this._categoria = categoria
     this._descricao = descricao
     this._imagem = imagem
-    this._preco = preco.toFixed(2)
+    this._preco = preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
   }
 
   // productConstructor() {
