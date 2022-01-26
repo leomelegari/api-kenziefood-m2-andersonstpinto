@@ -1,51 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/css/reset.css" />
-    <link rel="stylesheet" href="./src/css/style.css" />
-    <title>Kenzie Food</title>
-  </head>
-  <body>
-    <header>
-      <figure>
-        <img src="./src/img/kenzie-food.png" alt="Kenzie Food Logo" />
-      </figure>
 
-      <form action="submit">
-        <input
-          type="search"
-          name="search-bar"
-          id="search-bar"
-          placeholder="Pesquisar por produto"
-        />
-      </form>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./src/css/reset.css" />
+  <link rel="stylesheet" href="./src/css/style.css" />
+  <title>Kenzie Food</title>
+</head>
 
-    <main>
-      <ul id="hashtags">
-        <li>Todos</li>
-        <li>Panificadora</li>
-        <li>Frutas</li>
-        <li>Bebidas</li>
-      </ul>
+<body>
+  <header>
+    <figure>
+      <img src="./src/img/kenzie-food.png" alt="Kenzie Food Logo" />
+    </figure>
 
-      <section id="showcase-cart-wrapper">
-        <section id="showcase"></section>
+    <form action="submit">
+      <input type="search" name="search-bar" id="search-bar" placeholder="Pesquisar por produto" />
+    </form>
+  </header>
 
-        <section id="cart">
-          <div class="title">
-            <h2>Carrinho</h2>
-          </div>
-          <div id="cart-items">
-            <h3>Ops!</h3>
-            <p>Por enquanto não temos produtos no carrinho</p>
-          </div>
-        </section>
+  <main>
+    <ul id="hashtags">
+      <li>Todos</li>
+      <li>Panificadora</li>
+      <li>Frutas</li>
+      <li>Bebidas</li>
+    </ul>
+
+    <section id="showcase-cart-wrapper">
+      <section id="showcase">
       </section>
-    </main>
+      <section id="cart">
+        <div class="title">
+          <h2>Carrinho</h2>
+        </div>
+        <div id="cart-items">
+          <div id="empty-cart">
+            <img src="./src/img/cart.png" alt="">
+              <h3>Ops!</h3>
+              <p>Por enquanto não temos produtos no carrinho</p>
+          </div>
+          
+        </div>
+        <div id="hidden" hidden>
+          <div id="quantity">
+            <p>Quantidade</p>
+            <p id="total-quantity">0</p>
+          </div>
+          <div id="total">
+            <p>Total</p>
+            <p id="total-value">R$00,00</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="./src/models/kenzieFood.js"></script>
+  <script type="module" src="./src/controllers/kenzieFoodController.js"></script>
+</body>
 
     <script type="module" src="./src/models/kenzieFood.js"></script>
     <script
