@@ -1,4 +1,5 @@
 import { Produtos } from "../models/kenzieFood.js";
+const section = document.getElementById('showcase');
 
 // fetch("https://shrouded-mountain-15003.herokuapp.com/https://kenzie-food-api.herokuapp.com/product")
 //     .then(response => response.json())
@@ -32,20 +33,28 @@ const lista = document.querySelectorAll('#hashtags li')
 
 input.addEventListener('keyup', test1)
 function test1(evt){
-    console.log(filtro(evt.target.value))
+    let filtrados = []
+    filtrados = filtro(evt.target.value)
+    section.innerHTML = ''
+    filtrados.forEach(({ id, nome, categoria, descricao, imagem, preco }) => {
+        const newProduct = new Produtos({ id, nome, categoria, descricao, imagem, preco })
+        newProduct.productConstructor()
+    })
 }
 
 categorias.addEventListener('click', test)
 function test(evt){
     let filtrados = []
-    if(evt.target.tagName === "LI"){
+    if (evt.target.id === "Todos"){
+        filtrados = json
+    }else if(evt.target.tagName === "LI"){
         filtrados = filtro(evt.target.id)
     }
+    section.innerHTML = ''
     filtrados.forEach(({ id, nome, categoria, descricao, imagem, preco }) => {
         const newProduct = new Produtos({ id, nome, categoria, descricao, imagem, preco })
         newProduct.productConstructor()
     })
-    console.log(filtrados)
 }
 
 function filtro(input){
