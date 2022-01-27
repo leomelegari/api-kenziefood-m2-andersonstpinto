@@ -11,28 +11,33 @@
     <title>Kenzie Food - Cadastro de produtos</title>
 </head>
 
-<body>
-    <header>
-        <div class="container">
+<body class="body-cadastro">
+    <header class="header-cadastro">
+        <div class="container-cadastro">
             <figure>
                 <img src="./src/img/kenzie-food.png" alt="Kenzie Food Logo" />
             </figure>
         </div>
     </header>
-    <main>
-        <form>
+    <main class="main-cadastro">
+        <h2>Cadastro de produtos</h2>
+        <form class="form-cadastro">
             <label for="nome">Nome do produto</label>
             <input id="nome" type="text" placeholder="Digite aqui">
-            <label for="preco">Nome do produto</label>
-            <input id="preco" type="text" placeholder="Digite aqui">
-            <label for="categoria">Nome do produto</label>
-            <input id="categoria" type="text" placeholder="Digite aqui">
-            <label for="descricao">Nome do produto</label>
-            <input id="descricao" type="text" placeholder="Digite aqui">
-            <label for="img">Nome do produto</label>
-
-
+            <label for="preco">Preço</label>
+            <input id="preco" type="number" placeholder="Digite aqui">
+            <label for="categoria">Categoria</label>
+            <select id="categoria">
+                <option value="default">Selecione uma opção</option>
+                <option value="Panificadora">Panificadora</option>
+                <option value="Panificadora">Frutas</option>
+                <option value="Panificadora">Bebidas</option>
+            </select>
+            <!-- <input id="categoria" type="search" placeholder="Panificadora, frutas ou bebidas"> -->
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" placeholder="Descreva o produto"></textarea>
         </form>
+        <button type="submit">Cadastrar</button>
     </main>
 
 

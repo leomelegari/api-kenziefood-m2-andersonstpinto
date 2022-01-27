@@ -2,13 +2,13 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .container {
   padding: 21px 17px 0;
   margin-bottom: 17px;
-  background-color: #FFF;
+  background-color: #fff;
   /* box-shadow: 0px 0px 40px -20px rgba(0, 0, 0, 0.25); */
 }
 
@@ -34,7 +34,6 @@ main {
 }
 
 main ul {
-  
   display: flex;
   overflow-x: scroll;
 }
@@ -44,7 +43,8 @@ main ul {
   overflow-x: scroll;
 }
 
-main li, .product-tag {
+main li,
+.product-tag {
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -69,22 +69,22 @@ main li span {
 }
 
 li#Panificadora {
-  background-color: #FFF7F4;
-  border: 1px solid #FFF7F4;
+  background-color: #fff7f4;
+  border: 1px solid #fff7f4;
 }
 
 li#Frutas {
-  background-color: #FFE4EA;
+  background-color: #ffe4ea;
   border: 1px solid #ffe4ea;
 }
 
 li#Bebidas {
-  background-color: #F3EEF5;
-  border: 1px solid #F3EEF5;
+  background-color: #f3eef5;
+  border: 1px solid #f3eef5;
 }
 
 li#Todos {
-  background-color: #F8F9FA;
+  background-color: #f8f9fa;
   border: 1.5px solid #212529;
 }
 
@@ -105,7 +105,7 @@ li#Todos {
 }
 
 section figure img {
-  border: 3px solid #ffe4ea;;
+  border: 3px solid #ffe4ea;
   border-radius: 12px;
 }
 
@@ -113,7 +113,6 @@ section figure img {
   font-size: 16px;
   font-weight: 700;
   line-height: 26px;
-  
 }
 
 .product-description {
@@ -150,7 +149,6 @@ section figure img {
   display: flex;
   justify-content: center;
   width: 100%;
-
 }
 
 .container-cart {
@@ -194,7 +192,7 @@ section figure img {
   padding: 20px;
 }
 
-#empty-cart p{
+#empty-cart p {
   font-size: 12px;
   color: #868e96;
   max-width: 25ch;
@@ -230,12 +228,12 @@ section figure img {
   white-space: nowrap;
 }
 
-.cart-product p:nth-child(2){
+.cart-product p:nth-child(2) {
   font-size: 10px;
   color: #868e96;
 }
 
-.cart-product p:nth-child(3){
+.cart-product p:nth-child(3) {
   font-size: 12px;
   color: #212529;
 }
@@ -257,7 +255,8 @@ section figure img {
   margin-top: 3px;
 }
 
-#quantity, #total {
+#quantity,
+#total {
   display: flex;
   align-items: center;
   padding: 18px;
@@ -307,12 +306,10 @@ section figure img {
   background: transparent;
 }
 
-
 @media only screen and (min-width: 620px) {
   .container {
     display: flex;
     justify-content: space-between;
-    
   }
   header {
     width: 100%;
@@ -322,6 +319,9 @@ section figure img {
   .container input {
     width: 343px;
     background-position: 291px;
+  }
+  #hashtag {
+    padding: 10px;
   }
 }
 
@@ -333,8 +333,8 @@ section figure img {
 
   #cart {
     width: 343px;
+    /* margin-right: 350px; */
   }
-  
 
   ul {
     padding: 3px;
@@ -345,17 +345,25 @@ section figure img {
   #showcase-cart-wrapper {
     display: flex;
     justify-content: center;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+  .product-card {
+    width: 299px;
   }
 
   #showcase {
     max-width: 646px;
     flex-wrap: wrap;
     overflow-x: unset;
+    margin: 0 auto;
   }
 }
 
 @media only screen and (min-width: 1366px) {
   #showcase-cart-wrapper {
+    max-width: 1366px;
+    margin: 0 auto;
   }
 
   #showcase {
@@ -367,7 +375,6 @@ section figure img {
     max-width: 1300px;
   }
 }
-
 
 /* EFFECTS */
 
@@ -382,4 +389,80 @@ ul li:hover {
 .product-card:hover {
   transition: all ease 0.3s;
   transform: scale(1.03);
+}
+
+/* SEGUNDA PÁGINA - CADASTRO DE PRODUTOS */
+.container-cadastro {
+  padding: 21px 17px 0;
+  margin-bottom: 17px;
+  background-color: #fff;
+}
+.header-cadastro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+}
+.main-cadastro {
+  display: flex;
+  max-width: 600px;
+  margin: 30px auto;
+  flex-direction: column;
+  padding: 15px;
+  -webkit-box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.28);
+  box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.28);
+}
+.main-cadastro h2 {
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 23px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 35px;
+  /* background-color: #ceffeb; */
+}
+.main-cadastro button {
+  margin: 0 auto;
+  width: 150px;
+}
+.form-cadastro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-cadastro label {
+  margin-bottom: 5px;
+}
+.form-cadastro input {
+  width: 95%;
+  padding: 9px;
+  margin-bottom: 15px;
+  border-radius: 25px;
+  border: 1px solid lightgray;
+}
+.form-cadastro textarea {
+  width: 95%;
+  height: 90px;
+  margin-bottom: 15px;
+  padding: 9px;
+  border: none;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+.form-cadastro select {
+  width: 95%;
+  padding: 9px;
+  margin-bottom: 15px;
+  border-radius: 25px;
+  border: 1px solid lightgray;
+}
+.main-cadastro button {
+  border: none;
+  padding: 9px;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: lightgreen;
+  border: 1px solid transparent;
+  border-radius: 25px;
 }
