@@ -1,26 +1,16 @@
 import { Produtos } from '../models/kenzieFood.js'
+import { FilterController } from './searchcontroller.js'
 
 class UIHandler {
-  static database = []
+  static displayProducts(array) {
+    // const filteredData = this.filterProducts(searchTerm)
+    // const filteredData = FilterController.filterData(searchTerm)
 
-  static setDatabase(input) {
-    this.database = input
-  }
-
-  static displayProducts(searchTerm = 'Todos') {
-    const filteredData = this.filterProducts(searchTerm)
-    filteredData.forEach(object => {
+    array.forEach(object => {
+      console.log(object)
       const newProduct = new Produtos(object)
       this.productConstructor(newProduct)
     })
-  }
-
-  static filterProducts(input) {
-    return input === 'Todos'
-      ? this.database
-      : this.database.filter(
-          product => product.categoria.toLowerCase() === input.toLowerCase()
-        )
   }
 
   static productConstructor(objeto) {

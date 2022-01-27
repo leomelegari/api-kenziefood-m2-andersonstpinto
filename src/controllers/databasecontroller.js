@@ -1,20 +1,11 @@
 class DatabaseController {
   static databaseAPI = []
-  static filteredData = []
 
   static setDatabaseAPI(arrayProdutos) {
     this.databaseAPI = arrayProdutos
   }
 
-  static filterData(input) {
-    this.filteredData = this.databaseAPI.filter(produto => {
-      // Ajustar pra incluir palavras incompletas na busca
-      return (
-        produto.categoria.toLowerCase() === input.toLowerCase() ||
-        produto.nome.toLowerCase() === input.toLowerCase()
-      )
-    })
-  }
+  static getDatabase = () => this.databaseAPI
 
   static createLocalStorageCart() {
     localStorage.setItem('Carrinho', JSON.stringify([], null, 2))
