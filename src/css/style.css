@@ -5,23 +5,28 @@
   font-family: 'Poppins', sans-serif;
 }
 
-header {
+.container {
   padding: 21px 17px 0;
   margin-bottom: 17px;
+  background-color: #FFF;
+  /* box-shadow: 0px 0px 40px -20px rgba(0, 0, 0, 0.25); */
 }
 
-header img {
+.container img {
   width: 123px;
   margin-bottom: 16px;
 }
 
-header input {
-  width: 343px;
+.container input {
+  width: 100%;
   height: 54px;
   background-color: #f8f9fa;
   border: 1px solid #f8f9fa;
   border-radius: 33px;
   padding-left: 17px;
+  background: url("../img/search-btn.png");
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 main {
@@ -38,17 +43,43 @@ main ul {
   overflow-x: scroll;
 }
 
-main li,
-.product-tag {
+main li, .product-tag {
+  display: flex;
+  align-items: center;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
   padding: 6px 15px;
   background-color: #ffe4ea;
-  border: 1px solid #ffe4ea;
   border-radius: 30px;
   margin: 0 22px 27px 0;
   width: fit-content;
+  font-weight: 500;
+}
+
+main li span {
+  padding-right: 10px;
+  margin-top: 3px;
+}
+
+li#Panificadora {
+  background-color: #FFF7F4;
+  border: 1px solid #FFF7F4;
+}
+
+li#Frutas {
+  background-color: #FFE4EA;
+  border: 1px solid #ffe4ea;
+}
+
+li#Bebidas {
+  background-color: #F3EEF5;
+  border: 1px solid #F3EEF5;
+}
+
+li#Todos {
+  background-color: #F8F9FA;
+  border: 1.5px solid #212529;
 }
 
 .product-card {
@@ -103,7 +134,14 @@ main li,
 }
 
 #cart {
-  width: 342px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.container-cart {
+  width: 343px;
 }
 
 #cart .title {
@@ -258,18 +296,32 @@ main li,
 
 
 @media only screen and (min-width: 620px) {
-  header {
+  .container {
     display: flex;
     justify-content: space-between;
+    
+  }
+  header {
+    width: 100%;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .container input {
+    width: 343px;
+    background-position: 291px;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  header {
+  .container {
     margin: 0 auto 17px;
     max-width: 1075px;
   }
+
+  #cart {
+    width: 343px;
+  }
+  
 
   ul {
     margin: auto;
@@ -296,7 +348,7 @@ main li,
     max-width: 969px;
   }
 
-  header,
+  .container,
   ul {
     max-width: 1300px;
   }
