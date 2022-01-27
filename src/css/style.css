@@ -34,6 +34,7 @@ main {
 }
 
 main ul {
+  
   display: flex;
   overflow-x: scroll;
 }
@@ -55,6 +56,11 @@ main li, .product-tag {
   margin: 0 22px 27px 0;
   width: fit-content;
   font-weight: 500;
+  transition: all ease 0.3s;
+}
+
+main ul li {
+  cursor: pointer;
 }
 
 main li span {
@@ -85,6 +91,7 @@ li#Todos {
 .product-card {
   width: 300px;
   margin-right: 23px;
+  transition: all ease 0.3s;
 }
 
 .product-card .showProduct {
@@ -97,10 +104,16 @@ li#Todos {
   top: -20px;
 }
 
+section figure img {
+  border: 3px solid #ffe4ea;;
+  border-radius: 12px;
+}
+
 .product-card h2 {
   font-size: 16px;
   font-weight: 700;
   line-height: 26px;
+  
 }
 
 .product-description {
@@ -324,6 +337,7 @@ li#Todos {
   
 
   ul {
+    padding: 3px;
     margin: auto;
     max-width: 1075px;
   }
@@ -352,4 +366,20 @@ li#Todos {
   ul {
     max-width: 1300px;
   }
+}
+
+
+/* EFFECTS */
+
+ul li:hover {
+  animation-name: changeColor;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  transition: all ease 0.3s;
+  transform: scale(1.1);
+}
+
+.product-card:hover {
+  transition: all ease 0.3s;
+  transform: scale(1.03);
 }
