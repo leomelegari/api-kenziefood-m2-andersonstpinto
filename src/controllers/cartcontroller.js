@@ -20,9 +20,9 @@ class UICart {
                     <h4>${nome}</h4>
                     <p>${categoria}</p>
                     <p>${preco.toLocaleString('pt-br', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    })}</p>
+          style: 'currency',
+          currency: 'BRL',
+        })}</p>
                   </div>
                   <button id="trash-button" class="trash" dataid="${index}">
                     <img id="trash-img" class="trash" dataid="${index}" src="./src/img/trash.png" alt="">
@@ -51,6 +51,10 @@ class UICart {
   }
 
   static attInfo(value) {
+    const hiddenDiv = document.getElementById('hidden')
+    if (value.length > 0) {
+      hiddenDiv.removeAttribute('hidden')
+    }
     const totalValue = document.getElementById('total-value')
     const totalQuant = document.getElementById('total-quantity')
     const sum = value.reduce((total, product) => {
@@ -74,9 +78,11 @@ class UICart {
 
     //Add um addEvent no carrinho acima
     selectCart.addEventListener('click', e => {
-      //guarda o clique
-      const clicked = e.target.getAttribute('dataid')
-      this.removeFromCart(clicked)
+      if(e.target.className === "trash"){
+        //guarda o clique
+        const clicked = e.target.getAttribute('dataid')
+        this.removeFromCart(clicked)
+      }
     })
   }
 
@@ -84,9 +90,9 @@ class UICart {
     const toAdd = DatabaseController.databaseAPI.find(
       data => data.id == selected.id
     )
-    const hiddenDiv = document.getElementById('hidden')
+    // const hiddenDiv = document.getElementById('hidden')
     if (toAdd !== undefined) {
-      hiddenDiv.removeAttribute('hidden')
+      // hiddenDiv.removeAttribute('hidden')
       DatabaseController.addToLocalStorageCart(toAdd)
       UICart.createCart()
     }
