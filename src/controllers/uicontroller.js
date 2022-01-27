@@ -1,12 +1,10 @@
 import { Produtos } from '../models/kenzieFood.js'
-import { FilterController } from './searchcontroller.js'
 
 class UIHandler {
   static displayProducts(array) {
     const section = document.getElementById('showcase')
-    // const filteredData = this.filterProducts(searchTerm)
-    // const filteredData = FilterController.filterData(searchTerm)
     section.innerHTML = ''
+
     array.forEach(object => {
       const newProduct = new Produtos(object)
       this.productConstructor(newProduct)

@@ -1,5 +1,3 @@
-import { DatabaseController } from './databasecontroller.js'
-
 class APIController {
   static url =
     'https://shrouded-mountain-15003.herokuapp.com/https://kenzie-food-api.herokuapp.com/product'

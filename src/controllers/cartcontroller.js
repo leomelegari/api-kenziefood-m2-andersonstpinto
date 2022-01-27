@@ -20,9 +20,9 @@ class UICart {
                     <h4>${nome}</h4>
                     <p>${categoria}</p>
                     <p>${preco.toLocaleString('pt-br', {
-          style: 'currency',
-          currency: 'BRL',
-        })}</p>
+                      style: 'currency',
+                      currency: 'BRL',
+                    })}</p>
                   </div>
                   <button id="trash-button" class="trash" dataid="${index}">
                     <img id="trash-img" class="trash" dataid="${index}" src="./src/img/trash.png" alt="">
@@ -73,13 +73,10 @@ class UICart {
   }
 
   static interceptaCart() {
-    //Pegando o carrinho todo para "ouvir". Essa função é acionada ao add algo ao carrinho
     const selectCart = document.getElementById('cart-items')
 
-    //Add um addEvent no carrinho acima
     selectCart.addEventListener('click', e => {
-      if(e.target.className === "trash"){
-        //guarda o clique
+      if (e.target.className === 'trash') {
         const clicked = e.target.getAttribute('dataid')
         this.removeFromCart(clicked)
       }

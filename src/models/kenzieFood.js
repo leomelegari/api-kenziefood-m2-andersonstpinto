@@ -1,5 +1,3 @@
-
-
 class Produtos {
   constructor({ id, nome, categoria, descricao, imagem, preco }) {
     this._id = id
@@ -7,26 +5,11 @@ class Produtos {
     this._categoria = categoria
     this._descricao = descricao
     this._imagem = imagem
-    this._preco = preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+    this._preco = preco.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL',
+    })
   }
-
-  // productConstructor() {
-  //     const secProduct = document.createElement('section');
-  //     secProduct.className = "product-card";
-  //     secProduct.innerHTML =
-  //     `
-  //         <figure>
-  //           <img src="${this._imagem}" alt="Comida Americana" />
-  //           <p class="product-tag">${this._categoria}</p>
-  //         </figure>
-  //         <h2>${this._nome}</h2>
-  //         <p class="product-description">${this._descricao}</p>
-  //         <p class="price">R$ ${this._preco}</p>
-  //         <button class="add-to-cart">C</button>
-  //     `
-  //     section.appendChild(secProduct)
-  //     return secProduct
-  // }
 }
 
 export { Produtos }

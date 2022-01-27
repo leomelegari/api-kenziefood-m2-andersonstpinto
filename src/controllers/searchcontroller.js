@@ -5,10 +5,12 @@ class FilterController {
   static input = document
     .querySelector('input')
     .addEventListener('keyup', evt => this.filterData(evt.target.value))
+
   static forms = document
     .querySelector('form')
     .addEventListener('submit', evt => {
       evt.preventDefault()
+      this.filterData(document.querySelector('input').value)
     })
 
   static categorias = document
@@ -18,7 +20,6 @@ class FilterController {
     )
 
   static filterData(input = 'Todos') {
-    console.log(input)
     const filteredData =
       input === 'Todos' || input === ''
         ? DatabaseController.getDatabase()
@@ -28,7 +29,6 @@ class FilterController {
               produto.nome.toLowerCase().includes(input.toLowerCase())
             )
           })
-    console.log('filterData', filteredData)
     UIHandler.displayProducts(filteredData)
   }
 }
