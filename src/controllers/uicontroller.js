@@ -8,7 +8,6 @@ class UIHandler {
     // const filteredData = FilterController.filterData(searchTerm)
     section.innerHTML = ''
     array.forEach(object => {
-      console.log(object)
       const newProduct = new Produtos(object)
       this.productConstructor(newProduct)
     })

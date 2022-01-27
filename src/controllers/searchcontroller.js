@@ -8,24 +8,10 @@ class FilterController {
 
   static categorias = document
     .getElementById('hashtags')
-    .addEventListener('click', evt => this.filterData(evt.target.id))
-
-  // static filtroBusca(evt) {
-  //   let filtrados = []
-  //   filtrados = this.filterData(evt.target.value)
-  // }
-
-  // static filtroTag(evt) {
-  //   let filtrados = []
-  //   if (evt.target.id === 'Todos') {
-  //     filtrados = DatabaseController.get
-  //   } else if (evt.target.tagName === 'LI') {
-  //     filtrados = this.filterData(evt.target.id)
-  //   }
-  //   console.log(filtrados)
-  // }
+    .addEventListener('click', evt => this.filterData(evt.target))
 
   static filterData(input = 'Todos') {
+    console.log(input)
     const filteredData =
       input === 'Todos'
         ? DatabaseController.getDatabase()
@@ -35,7 +21,7 @@ class FilterController {
               produto.nome.toLowerCase() === input.toLowerCase()
             )
           })
-    console.log(filteredData)
+    console.log('filterData', filteredData)
     UIHandler.displayProducts(filteredData)
   }
 }

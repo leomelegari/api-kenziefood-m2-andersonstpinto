@@ -12,31 +12,49 @@
 
 <body>
   <header>
-    <figure>
-      <img src="./src/img/kenzie-food.png" alt="Kenzie Food Logo" />
-    </figure>
-
-    <form action="submit">
-      <input type="search" name="search-bar" id="search-bar" placeholder="Pesquisar por produto" />
-    </form>
+    <div class="container">
+      <figure>
+        <img src="./src/img/kenzie-food.png" alt="Kenzie Food Logo" />
+      </figure>
+      <form action="submit">
+        <input type="search" name="search-bar" id="search-bar" placeholder="Pesquisar por produto" />
+      </form>
+    </div>
   </header>
-    <main>
-      <ul id="hashtags">
-        <li id="Todos">Todos</li>
-        <li id="Panificadora">Panificadora</li>
-        <li id="Frutas">Frutas</li>
-        <li id="Bebidas">Bebidas</li>
-      </ul>
+  <main>
+    <ul id="hashtags">
+      <li id="Todos">Todos</li>
+      <li id="Panificadora"><span><img src="./src/img/icon-bread.png" alt="icone de pão"></span>
+        <p>Panificadora</p>
+      </li>
+      <li id="Frutas"><span><img src="./src/img/icon-fruits.png" alt="icone de frutas"></span>
+        <p>Frutas</p>
+      </li>
+      <li id="Bebidas"><span><img src="./src/img/icon-wine.png" alt="icone de pão"></span>
+        <p>Bebidas</p>
+      </li>
+    </ul>
 
-      <section id="showcase-cart-wrapper">
-        <section id="showcase">
-        </section>
+    <section id="showcase-cart-wrapper">
+      <section id="showcase">
+      </section>
 
-        <section id="cart">
+      <section id="cart">
+        <div class="container-cart">
           <div class="title">
             <h2>Carrinho</h2>
           </div>
-          <div id="cart-items">         
+          <div id="cart-items">
+          </div>
+          <div id="hidden" hidden>
+            <div id="quantity">
+              <p>Quantidade</p>
+              <p id="total-quantity">0</p>
+            </div>
+            <div id="total">
+              <p>Total</p>
+              <p id="total-value">R$00,00</p>
+            </div>
           </div>
           <div id="hidden" hidden>
             <div id="quantity">
@@ -50,8 +68,9 @@
           </div>
         </section>
       </section>
-    </main>
+  </main>
 
-    <script type="module" src="./src/app.js"></script>
-  </body>
+  <script type="module" src="./src/app.js"></script>
+</body>
+
 </html>
