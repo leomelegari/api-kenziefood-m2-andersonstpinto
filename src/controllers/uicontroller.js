@@ -7,16 +7,12 @@ class UIHandler {
     this.database = input
   }
 
-  static createProductCards(array) {
-    array.forEach(object => {
+  static displayProducts(searchTerm = 'Todos') {
+    const filteredData = this.filterProducts(searchTerm)
+    filteredData.forEach(object => {
       const newProduct = new Produtos(object)
       this.productConstructor(newProduct)
     })
-  }
-
-  static displayProducts(searchTerm = 'Todos') {
-    const filteredData = this.filterProducts(searchTerm)
-    this.createProductCards(filteredData)
   }
 
   static filterProducts(input) {
