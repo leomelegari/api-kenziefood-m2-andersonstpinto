@@ -8,7 +8,9 @@ class FilterController {
 
   static categorias = document
     .getElementById('hashtags')
-    .addEventListener('click', evt => this.filterData(evt.target))
+    .addEventListener('click', evt =>
+      this.filterData(evt.target.closest('li').id)
+    )
 
   static filterData(input = 'Todos') {
     console.log(input)
