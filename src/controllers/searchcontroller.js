@@ -5,6 +5,11 @@ class FilterController {
   static input = document
     .querySelector('input')
     .addEventListener('keyup', evt => this.filterData(evt.target.value))
+  static forms = document
+    .querySelector('form')
+    .addEventListener('submit', evt => {
+      evt.preventDefault()
+    })
 
   static categorias = document
     .getElementById('hashtags')
@@ -15,12 +20,12 @@ class FilterController {
   static filterData(input = 'Todos') {
     console.log(input)
     const filteredData =
-      input === 'Todos'
+      input === 'Todos' || input === ''
         ? DatabaseController.getDatabase()
         : DatabaseController.databaseAPI.filter(produto => {
             return (
-              produto.categoria.toLowerCase() === input.toLowerCase() ||
-              produto.nome.toLowerCase() === input.toLowerCase()
+              produto.categoria.toLowerCase().includes(input.toLowerCase()) ||
+              produto.nome.toLowerCase().includes(input.toLowerCase())
             )
           })
     console.log('filterData', filteredData)
