@@ -3,9 +3,10 @@ import { FilterController } from './searchcontroller.js'
 
 class UIHandler {
   static displayProducts(array) {
+    const section = document.getElementById('showcase')
     // const filteredData = this.filterProducts(searchTerm)
     // const filteredData = FilterController.filterData(searchTerm)
-
+    section.innerHTML = ''
     array.forEach(object => {
       console.log(object)
       const newProduct = new Produtos(object)

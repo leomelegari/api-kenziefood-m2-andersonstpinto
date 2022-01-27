@@ -1,4 +1,4 @@
-const section = document.getElementById('showcase')
+
 
 class Produtos {
   constructor({ id, nome, categoria, descricao, imagem, preco }) {
