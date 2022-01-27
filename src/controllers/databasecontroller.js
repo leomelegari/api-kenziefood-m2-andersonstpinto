@@ -16,15 +16,20 @@ class DatabaseController {
     })
   }
 
-  static createLocalStorageCart(objeto) {
-    if (localStorage.length === 0)
-      localStorage.setItem('Carrinho', JSON.stringify([], null, 2))
+  static createLocalStorageCart() {
+    localStorage.setItem('Carrinho', JSON.stringify([], null, 2))
+  }
 
+  static addToLocalStorageCart(objeto) {
     const currentCart = this.getLocalStorageCart()
     localStorage.setItem(
       'Carrinho',
       JSON.stringify([...currentCart, objeto], null, 2)
     )
+  }
+
+  static updateLocalStorageCart(array) {
+    localStorage.setItem('Carrinho', JSON.stringify(array, null, 2))
   }
 
   static getLocalStorageCart = () =>
