@@ -7,7 +7,7 @@ class DatabaseController {
   }
 
   static filtro(input) {
-    this.filteredData = this.databaseAPI.filter(produto => {
+    return this.filteredData = this.databaseAPI.filter(produto => {
       // Ajustar pra incluir palavras incompletas na busca
       return (
         produto.categoria.toLowerCase() === input.toLowerCase() ||

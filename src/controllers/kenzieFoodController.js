@@ -1,4 +1,5 @@
 import { Produtos } from '../models/kenzieFood.js'
+import { DatabaseController } from '../controllers/databasecontroller.js'
 const section = document.getElementById('showcase')
 
 // fetch("https://shrouded-mountain-15003.herokuapp.com/https://kenzie-food-api.herokuapp.com/product")
@@ -238,37 +239,13 @@ const json = [
   },
 ]
 
-json.forEach(({ id, nome, categoria, descricao, imagem, preco }) => {
-  const newProduct = new Produtos({
-    id,
-    nome,
-    categoria,
-    descricao,
-    imagem,
-    preco,
-  })
-  newProduct.productConstructor()
-})
-
 const input = document.querySelector('input')
 const categorias = document.getElementById('hashtags')
 
 input.addEventListener('keyup', test1)
 function test1(evt) {
   let filtrados = []
-  filtrados = filtro(evt.target.value)
-  section.innerHTML = ''
-  filtrados.forEach(({ id, nome, categoria, descricao, imagem, preco }) => {
-    const newProduct = new Produtos({
-      id,
-      nome,
-      categoria,
-      descricao,
-      imagem,
-      preco,
-    })
-    newProduct.productConstructor()
-  })
+  filtrados = DatabaseController.filtro(evt.target.value)
 }
 
 categorias.addEventListener('click', test)
@@ -277,27 +254,16 @@ function test(evt) {
   if (evt.target.id === 'Todos') {
     filtrados = json
   } else if (evt.target.tagName === 'LI') {
-    filtrados = filtro(evt.target.id)
+    filtrados = DatabaseController.filtro(evt.target.id)
   }
-  section.innerHTML = ''
-  filtrados.forEach(({ id, nome, categoria, descricao, imagem, preco }) => {
-    const newProduct = new Produtos({
-      id,
-      nome,
-      categoria,
-      descricao,
-      imagem,
-      preco,
-    })
-    newProduct.productConstructor()
-  })
+  console.log(filtrados)
 }
 
-function filtro(input) {
-  return json.filter(produto => {
-    return (
-      produto.categoria.toLowerCase() === input.toLowerCase() ||
-      produto.nome.toLocaleLowerCase() === input.toLowerCase()
-    )
-  })
-}
+// function filtro(input) {
+//   return json.filter(produto => {
+//     return (
+//       produto.categoria.toLowerCase() === input.toLowerCase() ||
+//       produto.nome.toLowerCase() === input.toLowerCase()
+//     )
+//   })
+// }
