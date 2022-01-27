@@ -1,67 +1,31 @@
-class SearchHandler {
-  static searchBar = document
-    .querySelector('form')
-    .addEventListener('keyup', e => {
-      e.preventDefault()
-      UIHandler.displayProducts(e.target.value)
-    })
+import { DatabaseController } from './databasecontroller.js'
+import { UIHandler } from './uicontroller.js'
 
-  static form = document.querySelector('form').addEventListener('submit', e => {
-    e.preventDefault()
-  })
+class FilterController {
+  static input = document
+    .querySelector('input')
+    .addEventListener('keyup', evt => this.filterData(evt.target.value))
 
-  static eventCart = document
-    .querySelector('#showcase')
-    .addEventListener('click', e => {
-      UIHandler.addProductToCart(e.target)
-    })
+  static categorias = document
+    .getElementById('hashtags')
+    .addEventListener('click', evt =>
+      this.filterData(evt.target.closest('li').id)
+    )
+
+  static filterData(input = 'Todos') {
+    console.log(input)
+    const filteredData =
+      input === 'Todos'
+        ? DatabaseController.getDatabase()
+        : DatabaseController.databaseAPI.filter(produto => {
+            return (
+              produto.categoria.toLowerCase() === input.toLowerCase() ||
+              produto.nome.toLowerCase() === input.toLowerCase()
+            )
+          })
+    console.log('filterData', filteredData)
+    UIHandler.displayProducts(filteredData)
+  }
 }
 
-// input.addEventListener('keyup', test1)
-// function test1(evt) {
-//   let filtrados = []
-//   filtrados = filtro(evt.target.value)
-//   section.innerHTML = ''
-//   filtrados.forEach(({ id, nome, categoria, descricao, imagem, preco }) => {
-//     const newProduct = new Produtos({
-//       id,
-//       nome,
-//       categoria,
-//       descricao,
-//       imagem,
-//       preco,
-//     })
-//     newProduct.productConstructor()
-//   })
-// }
-
-// categorias.addEventListener('click', test)
-// function test(evt) {
-//   let filtrados = []
-//   if (evt.target.id === 'Todos') {
-//     filtrados = json
-//   } else if (evt.target.tagName === 'LI') {
-//     filtrados = filtro(evt.target.id)
-//   }
-//   section.innerHTML = ''
-//   filtrados.forEach(({ id, nome, categoria, descricao, imagem, preco }) => {
-//     const newProduct = new Produtos({
-//       id,
-//       nome,
-//       categoria,
-//       descricao,
-//       imagem,
-//       preco,
-//     })
-//     newProduct.productConstructor()
-//   })
-// }
-
-// function filtro(input) {
-//   return json.filter(produto => {
-//     return (
-//       produto.categoria.toLowerCase() === input.toLowerCase() ||
-//       produto.nome.toLocaleLowerCase() === input.toLowerCase()
-//     )
-//   })
-// }
+export { FilterController }

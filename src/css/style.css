@@ -2,26 +2,31 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-header {
+.container {
   padding: 21px 17px 0;
   margin-bottom: 17px;
+  background-color: #fff;
+  /* box-shadow: 0px 0px 40px -20px rgba(0, 0, 0, 0.25); */
 }
 
-header img {
+.container img {
   width: 123px;
   margin-bottom: 16px;
 }
 
-header input {
-  width: 343px;
+.container input {
+  width: 100%;
   height: 54px;
   background-color: #f8f9fa;
   border: 1px solid #f8f9fa;
   border-radius: 33px;
   padding-left: 17px;
+  background: url("../img/search-btn.png");
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 main {
@@ -40,20 +45,53 @@ main ul {
 
 main li,
 .product-tag {
+  display: flex;
+  align-items: center;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
   padding: 6px 15px;
   background-color: #ffe4ea;
-  border: 1px solid #ffe4ea;
   border-radius: 30px;
   margin: 0 22px 27px 0;
   width: fit-content;
+  font-weight: 500;
+  transition: all ease 0.3s;
+}
+
+main ul li {
+  cursor: pointer;
+}
+
+main li span {
+  padding-right: 10px;
+  margin-top: 3px;
+}
+
+li#Panificadora {
+  background-color: #fff7f4;
+  border: 1px solid #fff7f4;
+}
+
+li#Frutas {
+  background-color: #ffe4ea;
+  border: 1px solid #ffe4ea;
+}
+
+li#Bebidas {
+  background-color: #f3eef5;
+  border: 1px solid #f3eef5;
+}
+
+li#Todos {
+  background-color: #f8f9fa;
+  border: 1.5px solid #212529;
 }
 
 .product-card {
   width: 300px;
   margin-right: 23px;
+  transition: all ease 0.3s;
 }
 
 .product-card .showProduct {
@@ -64,6 +102,11 @@ main li,
   margin: 0 0 0 12px;
   position: relative;
   top: -20px;
+}
+
+section figure img {
+  border: 3px solid #ffe4ea;
+  border-radius: 12px;
 }
 
 .product-card h2 {
@@ -103,7 +146,13 @@ main li,
 }
 
 #cart {
-  width: 342px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container-cart {
+  width: 343px;
 }
 
 #cart .title {
@@ -143,7 +192,7 @@ main li,
   padding: 20px;
 }
 
-#empty-cart p{
+#empty-cart p {
   font-size: 12px;
   color: #868e96;
   max-width: 25ch;
@@ -179,12 +228,12 @@ main li,
   white-space: nowrap;
 }
 
-.cart-product p:nth-child(2){
+.cart-product p:nth-child(2) {
   font-size: 10px;
   color: #868e96;
 }
 
-.cart-product p:nth-child(3){
+.cart-product p:nth-child(3) {
   font-size: 12px;
   color: #212529;
 }
@@ -206,7 +255,8 @@ main li,
   margin-top: 3px;
 }
 
-#quantity, #total {
+#quantity,
+#total {
   display: flex;
   align-items: center;
   padding: 18px;
@@ -256,22 +306,38 @@ main li,
   background: transparent;
 }
 
-
 @media only screen and (min-width: 620px) {
-  header {
+  .container {
     display: flex;
     justify-content: space-between;
+  }
+  header {
+    width: 100%;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .container input {
+    width: 343px;
+    background-position: 291px;
+  }
+  #hashtag {
+    padding: 10px;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  header {
+  .container {
     margin: 0 auto 17px;
     max-width: 1075px;
   }
 
+  #cart {
+    width: 343px;
+    /* margin-right: 350px; */
+  }
+
   ul {
+    padding: 3px;
     margin: auto;
     max-width: 1075px;
   }
@@ -279,25 +345,124 @@ main li,
   #showcase-cart-wrapper {
     display: flex;
     justify-content: center;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+  .product-card {
+    width: 299px;
   }
 
   #showcase {
     max-width: 646px;
     flex-wrap: wrap;
     overflow-x: unset;
+    margin: 0 auto;
   }
 }
 
 @media only screen and (min-width: 1366px) {
   #showcase-cart-wrapper {
+    max-width: 1366px;
+    margin: 0 auto;
   }
 
   #showcase {
     max-width: 969px;
   }
 
-  header,
+  .container,
   ul {
     max-width: 1300px;
   }
+}
+
+/* EFFECTS */
+
+ul li:hover {
+  animation-name: changeColor;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  transition: all ease 0.3s;
+  transform: scale(1.1);
+}
+
+.product-card:hover {
+  transition: all ease 0.3s;
+  transform: scale(1.03);
+}
+
+/* SEGUNDA PÁGINA - CADASTRO DE PRODUTOS */
+.container-cadastro {
+  padding: 21px 17px 0;
+  margin-bottom: 17px;
+  background-color: #fff;
+}
+.header-cadastro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+}
+.main-cadastro {
+  display: flex;
+  max-width: 600px;
+  margin: 30px auto;
+  flex-direction: column;
+  padding: 15px;
+  -webkit-box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.28);
+  box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.28);
+}
+.main-cadastro h2 {
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 23px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 35px;
+  /* background-color: #ceffeb; */
+}
+.main-cadastro button {
+  margin: 0 auto;
+  width: 150px;
+}
+.form-cadastro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-cadastro label {
+  margin-bottom: 5px;
+}
+.form-cadastro input {
+  width: 95%;
+  padding: 9px;
+  margin-bottom: 15px;
+  border-radius: 25px;
+  border: 1px solid lightgray;
+}
+.form-cadastro textarea {
+  width: 95%;
+  height: 90px;
+  margin-bottom: 15px;
+  padding: 9px;
+  border: none;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+.form-cadastro select {
+  width: 95%;
+  padding: 9px;
+  margin-bottom: 15px;
+  border-radius: 25px;
+  border: 1px solid lightgray;
+}
+.main-cadastro button {
+  border: none;
+  padding: 9px;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: lightgreen;
+  border: 1px solid transparent;
+  border-radius: 25px;
 }
