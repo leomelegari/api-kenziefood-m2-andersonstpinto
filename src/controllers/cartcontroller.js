@@ -90,9 +90,7 @@ class UICart {
     const toAdd = DatabaseController.databaseAPI.find(
       data => data.id == selected.id
     )
-    // const hiddenDiv = document.getElementById('hidden')
     if (toAdd !== undefined) {
-      // hiddenDiv.removeAttribute('hidden')
       DatabaseController.addToLocalStorageCart(toAdd)
       UICart.createCart()
     }
