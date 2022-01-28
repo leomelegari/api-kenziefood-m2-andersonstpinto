@@ -46,13 +46,16 @@ class RequestHandler {
   }
 
   static getAllMethod = async () => {
-    return await fetch(this.urlAPI, {
+    const response = await fetch(this.urlAPI, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': this.token,
       },
     }).then(res => res.json())
+
+    console.log(response)
+    return response
   }
 }
 
