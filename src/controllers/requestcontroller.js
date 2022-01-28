@@ -46,15 +46,13 @@ class RequestHandler {
   }
 
   static getAllMethod = async () => {
-    const response = await fetch(this.urlAPI, {
+    return await fetch(this.urlAPI, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': this.token,
       },
     }).then(res => res.json())
-
-    console.log(response)
   }
 }
 
@@ -104,3 +102,5 @@ const deletar = document
   })
 
 RequestHandler.getAllMethod()
+
+export { RequestHandler }
