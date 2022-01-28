@@ -2,7 +2,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -24,7 +24,7 @@
   border: 1px solid #f8f9fa;
   border-radius: 33px;
   padding-left: 17px;
-  background: url("../img/search-btn.png");
+  background: url('../img/search-btn.png');
   background-repeat: no-repeat;
   background-position: right;
 }
@@ -429,7 +429,6 @@ ul li:hover {
 .form-cadastro {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .form-cadastro label {
   margin-bottom: 5px;
@@ -465,4 +464,8 @@ ul li:hover {
   background-color: lightgreen;
   border: 1px solid transparent;
   border-radius: 25px;
+}
+
+.buttons {
+  margin: auto;
 }
